@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: orders-api
+spec:
+  selector:
+    matchLabels:
+      app: orders-api
+  template:
+    metadata:
+      labels:
+        app: orders-api
+    spec:
+      containers:
+      - name: orders-api
+        image: lipelabsregistry.azurecr.io/orders.api:1.6
+        resources:
+          limits:
+            memory: "128Mi"
+            cpu: "256m"
+        ports:
+        - containerPort: 5001
+          name: http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: orders-api
+spec:
+  selector:
+    app: orders-api
+  ports:
+  - port: 80
+    targetPort: 5001
+---
+apiVersion: networking.k8s.io/v1
+kind: Ingress
+metadata:
+  name: orders-api
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+  labels:
+    name: orders-api
+spec:
+  rules:
+  - host: dev-aks.lipeferreira.online
+    http:
+      paths:
+      - pathType: Prefix
+        path: "/"
+        backend:
+          service:
+            name: orders-api
+            port: 
+              number: 80
+
+

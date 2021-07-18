@@ -1,0 +1,30 @@
+version: "3.7"
+
+services:
+    backend:
+        build: ./projetos/api/ApiOrdersForCustomers
+        environment:
+            - ConnectionStrings__ApiDB=Server=database; port=3306; database=mydb; user=root; password=123456; Connect Timeout=15000
+        ports: 
+            - "5000:80"
+        depends_on:
+            - database
+
+    frontend:
+        build: ./projetos/front/OrdersForCustomers
+        ports: 
+            - "80:80"
+        depends_on: 
+            - backend
+
+    database:
+        image: lipelabsregistry.azurecr.io/mymariadb
+        environment:
+            MYSQL_ROOT_PASSWORD: '123456'
+            MYSQL_DATABASE: 'mydb'
+            volumes:
+                mariadb:/var/lib/mysql
+        ports:
+            - "3306:3306"
+volumes:
+    mariadb:

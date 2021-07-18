@@ -1,0 +1,30 @@
+nav{
+    display: inline-block;
+    background-color: rgba(0, 0, 0, 0.534);
+    width: 100%;
+    padding: 10px;
+}
+
+.menu{
+    list-style:none;
+    border:1px solid #c0c0c0;
+    float:left;
+
+}
+.menu li{
+        position:relative;
+        float:left;
+        border-right:1px solid #c0c0c0;
+}
+.menu li a{color:rgb(255, 254, 254); text-decoration:none; padding:5px 20px; display:block;}
+
+.menu li a:hover{
+background:rgb(63, 62, 62);
+color:#fff;
+text-shadow:0px 0px 5px #fff;
+}
+
+section{
+    margin-top: 50px;
+}
+

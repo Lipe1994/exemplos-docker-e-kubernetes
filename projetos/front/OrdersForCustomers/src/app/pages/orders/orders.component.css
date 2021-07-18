@@ -1,0 +1,24 @@
+p,li{
+    color:#fff;
+    margin-bottom: 15px;
+}
+
+li:hover{
+    color:rgb(112, 112, 112);
+    margin-bottom: 15px;
+    cursor: pointer;
+}
+
+.lista{
+    margin-left: 50px;
+    
+    list-style-type: "→ ";   
+    font-size: medium;
+}
+
+li a{color:#fff; text-decoration:none; padding:5px 20px; display:inline-block;}
+li a:hover{
+    color:rgb(112, 112, 112);
+
+    cursor: pointer;
+}

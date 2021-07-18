@@ -1,0 +1,22 @@
+<div>
+    <div *ngIf="(form$ | async) as form; else loading" >
+        
+    <form (ngSubmit)="salvar(form)" [formGroup]="form"  novalidade>
+            <div>
+                <input type="number" placeholder="number"  formControlName="number" />
+                <span *ngIf="form.get('number')?.errors?.required && form.get('number')?.touched">campo inválido</span>
+          </div>
+            <div>
+                <input type="text" placeholder="customerName"  formControlName="customerName" />
+                <span *ngIf="form.get('customerName')?.errors?.required && form.get('customerName')?.touched">campo inválido</span>
+          </div>
+            <div>
+                <input type="text" placeholder="description"  formControlName="description" />
+                <span *ngIf="form.get('description')?.errors?.required && form.get('description')?.touched">campo inválido</span>
+          </div>
+
+          <button class='btn btn-info'  type="submit">Salvar</button>
+    </form>
+    </div>
+    <ng-template #loading> <p>Carregando...</p></ng-template>
+</div>
